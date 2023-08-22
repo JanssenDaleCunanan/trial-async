@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TRIAL ASYNC</title>
+
+        <script>
+          
+          
+
+          async function suggestions() {
+            await fetch('/suggestions', {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(response => response.json())
+            .then(response => {
+              let output = JSON.stringify(response)
+              console.log (`THIS IS THE RETURNED DATA: ${output}`)
+              document.getElementById("sampleList").innerHTML = output;
+            });
+          }
+       </script>
+    </head>
+
+    <body>
+
+        <h1>Show List</h1>
+
+
+        
+        <script>suggestions()</script>
+
+        <p id="sampleList"></p>
+        
+        
+
+        
+    </body>
+</html>
